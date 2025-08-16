@@ -10,6 +10,11 @@ from concurrent.futures import ThreadPoolExecutor
 import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
+from dotenv import load_dotenv
+
+# Load token from .env
+load_dotenv()
+TOKEN = os.getenv("TELEGRAM_TOKEN")  # Make sure your .env contains this
 
 # Set up TLS certificates path
 os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
@@ -112,7 +117,6 @@ if __name__ == "__main__":
     import asyncio
     from telegram.ext import Application
 
-    TOKEN = os.getenv("TELEGRAM_TOKEN")  # Ensure this is set in the environment
     if not TOKEN:
         print("❌ TELEGRAM_TOKEN environment variable not set.")
         exit(1)
