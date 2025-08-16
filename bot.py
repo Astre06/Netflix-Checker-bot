@@ -95,10 +95,10 @@ async def handle_doc(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if is_valid_cookie(cookie):
             data = _cookie_dict_to_json_style(cookie)
             idx = next(counter)
-            temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=f'_working{idx}.txt', mode='w', encoding='utf-8')
-            json.dump(data, temp_file, ensure_ascii=False, indent=2)
-            temp_file.close()
-            return temp_file.name
+            path = os.path.join(tempfile.gettempdir(), f"working{idx}.txt")
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            return path
         return None
 
     with ThreadPoolExecutor(max_workers=4) as executor:
