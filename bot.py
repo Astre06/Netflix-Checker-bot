@@ -10,11 +10,9 @@ from concurrent.futures import ThreadPoolExecutor
 import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
-from dotenv import load_dotenv
 
 # Load token from .env
-load_dotenv()
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")  # Make sure your .env contains this
+TELEGRAM_TOKEN = "7311871048:AAGKNhHx-vxa0rH8-3JoHiFftEK7UB8IuuK"
 
 # Set up TLS certificates path
 os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
