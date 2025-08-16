@@ -12,7 +12,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
 
 # Hardcoded Telegram token
-TELEGRAM_TOKEN = "7311871048:AAGKNhHx-vxa0rH8-3JoHiFftEK7UB8IuuK"
+TELEGRAM_TOKEN = "7311871048:AAFTs1wp8h1GIgpoRvgUCF-IVDJ6a1ZH4Vo"
 
 # TLS certificate path
 os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
