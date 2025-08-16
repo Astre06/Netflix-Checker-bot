@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 
 # Load token from .env
 load_dotenv()
-TOKEN = os.getenv("TELEGRAM_TOKEN")  # Make sure your .env contains this
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")  # Make sure your .env contains this
 
 # Set up TLS certificates path
 os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
