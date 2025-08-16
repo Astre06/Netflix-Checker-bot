@@ -1,3 +1,4 @@
+
 import os
 import json
 import logging
@@ -11,7 +12,7 @@ import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
 
-# Load token from .env
+# Load token directly
 TELEGRAM_TOKEN = "7311871048:AAGKNhHx-vxa0rH8-3JoHiFftEK7UB8IuuK"
 
 # Set up TLS certificates path
@@ -115,11 +116,11 @@ if __name__ == "__main__":
     import asyncio
     from telegram.ext import Application
 
-    if not TOKEN:
-        print("❌ TELEGRAM_TOKEN environment variable not set.")
+    if not TELEGRAM_TOKEN:
+        print("❌ TELEGRAM_TOKEN not set.")
         exit(1)
 
-    app = ApplicationBuilder().token(TOKEN).build()
+    app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
     doc_handler = MessageHandler(filters.Document.ALL, handle_doc)
     app.add_handler(doc_handler)
 
