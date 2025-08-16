@@ -1,4 +1,3 @@
-
 import os
 import json
 import logging
@@ -12,14 +11,15 @@ import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
 
-# Load token directly
+# Hardcoded Telegram token
 TELEGRAM_TOKEN = "7311871048:AAGKNhHx-vxa0rH8-3JoHiFftEK7UB8IuuK"
 
-# Set up TLS certificates path
+# TLS certificate path
 os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
 SECURE_HTTPONLY_NAMES = {"NetflixId", "SecureNetflixId"}
-logging.basicConfig(level=logging.INFO)
 
+# Logging
+logging.basicConfig(level=logging.INFO)
 counter = count(1)
 
 def _parse_cookie_header_format(cookie_str: str):
@@ -113,12 +113,7 @@ async def handle_doc(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("✅ All done!")
 
 if __name__ == "__main__":
-    import asyncio
     from telegram.ext import Application
-
-    if not TELEGRAM_TOKEN:
-        print("❌ TELEGRAM_TOKEN not set.")
-        exit(1)
 
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
     doc_handler = MessageHandler(filters.Document.ALL, handle_doc)
